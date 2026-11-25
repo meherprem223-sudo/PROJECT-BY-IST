@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed-dim": "#6bd8cb", "tertiary": "#001c19", "on-error": "#ffffff", "on-surface": "#191c1e", "surface-container-highest": "#e0e3e5", "on-tertiary-fixed-variant": "#005049", "surface-bright": "#f7f9fb", "on-secondary-fixed-variant": "#002fc9", "error": "#ba1a1a", "on-surface-variant": "#45464e", "on-primary-fixed": "#0c1a3b", "primary-fixed-dim": "#b9c5f0", "surface-container-low": "#f2f4f6", "surface": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#f4f3ff", "on-background": "#191c1e", "surface-variant": "#e0e3e5", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "secondary": "#1840e6", "surface-container": "#eceef0", "on-secondary": "#ffffff", "on-primary": "#ffffff", "on-secondary-fixed": "#00105b", "inverse-surface": "#2d3133", "on-primary-container": "#8693bb", "error-container": "#ffdad6", "on-tertiary-container": "#2ea498", "tertiary-fixed": "#89f5e7", "tertiary-container": "#00332e", "outline": "#75777f", "secondary-fixed-dim": "#bac3ff", "surface-tint": "#515d82", "primary-fixed": "dae2ff", "on-tertiary-fixed": "#00201d", "inverse-on-surface": "#eff1f3", "background": "#f7f9fb", "secondary-fixed": "#dee0ff", "secondary-container": "#3d5dff", "primary": "#071637", "inverse-primary": "#b9c5f0", "primary-container": "#1e2b4d", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#394669", "surface-dim": "#d8dadc", "outline-variant": "#c6c6cf" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "margin": "2rem", "space-md": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "gutter": "1.5rem", "space-2xl": "3rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-display-mobile": [ "Plus Jakarta Sans" ], "label-sm": [ "Plus Jakarta Sans" ], "label-md": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-display": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "label-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ] }, "fontSize": { "headline-display-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "headline-display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-lg": [ "15px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Campus Connect Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCLyjMIEKyo9wZN5roz68AtzeEaTA2xIcvAm0clmEpCLMKGhFE2MatWlwzgIB2KJTyzYFPF9f4iF7HEiLsGBJGFqGZy_RJfj0GzPB8x0RpS7bqXu2SYYiAUb2m5DLbSfrYbSsnwsgGVRdHR-1uBD2B4yiYCqYENsWHAR8WZZRb6tKJIKLc2GH4x5r4azpupElWYtRrq3td9YU-WE5n0xZj0kkBOCSR2yKze2CawBnN4Tw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Campus Connect</span></div><div class="px-space-md py-space-sm"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span><select class="w-full bg-transparent font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer"><option>Main University Campus</option><option>North Campus Engineering</option><option>South Medical Center</option></select></div></div><nav class="flex-1 px-space-md py-space-sm space-y-space-xs" data-active-classes="bg-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="overview" href="#"><span class="material-symbols-outlined">dashboard</span><span>Home / Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="upcoming-events" href="#"><span class="material-symbols-outlined">calendar_month</span><span>Upcoming Events</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg" data-path="recent-events" href="#"><span class="material-symbols-outlined">history_edu</span><span>Recent Events</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="workshops" href="#"><span class="material-symbols-outlined">psychology</span><span>Workshops</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="branch-events" href="#"><span class="material-symbols-outlined">hub</span><span>Branch Events</span></a></nav><div class="p-space-md space-y-space-sm"><button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary transition-all" type="button"><span class="material-symbols-outlined text-[18px]">notifications_active</span><span>Subscribe to Alerts</span></button><button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container-low text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px]">filter_list</span><span>Filter by My Branch</span></button></div><div class="px-space-md py-space-sm bg-surface-container-low mx-space-md mb-space-md rounded-lg flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></div><span class="font-label-sm text-label-sm text-on-surface-variant">Spring Semester 2026</span></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-space-md text-outline pointer-events-none text-[20px]">search</span><input class="w-full h-11 pl-11 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary transition-all" placeholder="Search events, workshops, clubs, branches..." type="search"/></div></div><div class="flex items-center gap-space-lg"><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface">Maya Patel</span><span class="font-label-sm text-label-sm text-on-surface-variant">CS '26</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv-AfSEddyO3MykqEhGtCmVroOJrnXZ--5N-Ei5yrU77Y-CcFsTF-s3Boea2okXpXnGX8dKlKYgIwoNBIKHUkF8ii0iRerV8mFtoO_9eUEYTi_14cb5eYwnMI3Fwl3DlcFa-1wdFpEI91cmOs8J6w3oZVgmdYEYTNdUHw6Adv3pLorb9k5a2oOnGRWXClBpZVw65AKEH12YrWKFoxJAiD1Bj74sFWh_viw-zS8s3Ew"/></div></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Utility Context Bar (Breadcrumb & Live Status) -->
+<div class="px-space-xl pt-space-lg pb-space-sm flex flex-wrap items-center justify-between gap-space-md">
+<nav class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-secondary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="text-on-surface font-semibold">Recent Events Archive</span>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="text-secondary font-semibold">Event Recaps &amp; Artifacts</span>
+</nav>
+<div class="flex items-center gap-space-sm bg-surface-container-high px-space-md py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface">Fall 2026 Archive Verified • 48 Event Reports</span>
+</div>
+</div>
+<!-- Editorial Section Title & Filters -->
+<section class="px-space-xl py-space-md">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-lg">
+<div class="max-w-2xl">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary font-bold">Historical Record &amp; Outcomes</span>
+<h1 class="font-headline-lg text-headline-lg text-primary mt-space-xs tracking-tight">Recent Campus Events Archive &amp; Recaps</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Explore keynote takeaways, award-winning project showcases, high-definition photo galleries, and certified credentials from past institutional events.
+        </p>
+</div>
+<!-- Live Filters Module -->
+<div class="flex flex-wrap items-center gap-space-sm bg-surface-container-lowest p-space-xs rounded-xl shadow-sm">
+<div class="flex items-center bg-surface-container px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mr-space-xs">calendar_today</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="semester-filter">
+<option selected="">Fall 2026</option>
+<option>Spring 2026</option>
+<option>Fall 2025</option>
+<option>All Semesters</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container px-space-sm py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant mr-space-xs">domain</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer" id="dept-filter">
+<option selected="">All Departments</option>
+<option>Computer Science &amp; AI</option>
+<option>Robotics &amp; Mechatronics</option>
+<option>Business &amp; Entrepreneurship</option>
+<option>Fine Arts &amp; Humanities</option>
+<option>Athletics Association</option>
+</select>
+</div>
+<div class="relative flex items-center min-w-[200px]">
+<span class="material-symbols-outlined absolute left-2 text-[18px] text-outline">search</span>
+<input class="w-full h-9 pl-8 pr-2 bg-surface-container text-on-surface rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary placeholder:text-outline" placeholder="Search archive recaps..." type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Master Recap Banner -->
+<section class="px-space-xl mb-space-xl">
+<div class="relative rounded-2xl overflow-hidden bg-primary text-on-primary shadow-xl">
+<!-- Ambient Glow Decorator -->
+<div class="absolute -right-20 -top-20 w-96 h-96 rounded-full bg-secondary/30 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-tertiary-fixed-dim/20 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl p-space-xl items-center">
+<div class="lg:col-span-7 flex flex-col justify-between space-y-space-md">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold uppercase tracking-wider">
+              Flagship Highlight
+            </span>
+<span class="flex items-center gap-1 font-label-sm text-label-sm text-primary-fixed-dim">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+              Concluded Oct 24, 2026 • Main Quad &amp; Arena
+            </span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg tracking-tight font-extrabold text-on-primary leading-tight">
+              Featured Recap: National Robotics Championship &amp; Drone Derby 2026
+            </h2>
+<p class="font-body-md text-body-md text-primary-fixed-dim mt-space-sm max-w-xl">
+              Universities nationwide gathered for three intense days of autonomous rover navigation, payload delivery, and micro-drone precision races. See the winning technical architectures and replay the Grand Finals broadcast.
+            </p>
+</div>
+<!-- Impact Metrics Strip -->
+<div class="grid grid-cols-3 gap-space-md pt-space-sm max-w-lg">
+<div class="bg-primary-container/80 backdrop-blur-md p-space-sm rounded-xl">
+<div class="font-headline-md text-headline-md font-bold text-on-primary">850+</div>
+<div class="font-label-sm text-label-sm text-primary-fixed-dim">Verified Attendees</div>
+</div>
+<div class="bg-primary-container/80 backdrop-blur-md p-space-sm rounded-xl">
+<div class="font-headline-md text-headline-md font-bold text-tertiary-fixed">42</div>
+<div class="font-label-sm text-label-sm text-primary-fixed-dim">Collegiate Teams</div>
+</div>
+<div class="bg-primary-container/80 backdrop-blur-md p-space-sm rounded-xl">
+<div class="font-headline-md text-headline-md font-bold text-secondary-fixed">$15,000</div>
+<div class="font-label-sm text-label-sm text-primary-fixed-dim">Prizes Awarded</div>
+</div>
+</div>
+<!-- CTAs -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="px-space-md py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md flex items-center gap-2 hover:bg-secondary-container transition-all shadow-md" href="#recap-robotics">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+<span>Watch Finals Stream (2h 14m)</span>
+</a>
+<a class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface transition-all flex items-center gap-2" href="#certificates">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+<span>Collect Digital Badge</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="College students in modern engineering competition arena testing dynamic carbon-fiber drones and autonomous wheeled robots under dramatic stage lighting with illuminated university banners and blue neon accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWm0id89p_SrIhHGjS921aB9FoQ0EWBjn3-8s7w_FmvCEuqaE0NcuQMW79fHi9W0B-xIXSUJcbZLUF5E_lweatqRkB8_YpChiX4-js34uzKBoRn0K3uo5qF1MFV3mfzSVoAsalPLU_V-YhtoLydOHKYUY0g50aABc0BoLdRmnZGXiZUj11L0yuJTLGSi92ipByad2iF_mew_egS7-gicgHlfpxjq3xREBt39eXm7S5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 p-space-sm rounded-lg bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-between text-on-surface">
+<div>
+<div class="font-label-md text-label-md font-bold text-primary">First Place: Stanford Aerodynamics</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Autonomous Slalom Course (21.44s)</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[24px]">emoji_events</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Event Archive Feed (Tabs & View Controls) -->
+<section class="px-space-xl mb-space-lg">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-secondary-container text-on-secondary font-label-md text-label-md shadow-sm">
+          Detailed Dossier View
+        </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+          Compact Feed
+        </button>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+        Displaying <strong>4 of 48</strong> archived events with complete digital deliverables
+      </div>
+</div>
+</section>
+<!-- Main Grid of Detailed Event Recaps -->
+<section class="px-space-xl space-y-space-xl mb-space-2xl">
+<!-- RECAP CARD 1: Cybersecurity Summit -->
+<article class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Date Badge & Metadata Column -->
+<div class="lg:col-span-3 flex flex-col justify-between space-y-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center text-center shadow-xs">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Oct</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary leading-none">18</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                  Concluded
+                </span>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Fall Session #14</div>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+<span>Turing Hall Auditorium A</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">groups</span>
+<span>410 Attendees registered</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">badge</span>
+<span>Computer Science &amp; InfoSec</span>
+</div>
+</div>
+</div>
+<!-- Student Rating Box -->
+<div class="pt-space-sm bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface ml-1">4.92 / 5.0</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">320 Reviews</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</div>
+<!-- Event Body Details -->
+<div class="lg:col-span-9 flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px- space-xs py-0.5 px-2 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold uppercase">Academic Keynote</span>
+<span class="px-space-xs py-0.5 px-2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Live Lab Sandbox</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Archive ID: SEC-2026-F1</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs font-bold">
+              Cybersecurity Summit: Defending Modern Networks &amp; Zero Trust Architecture
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              A comprehensive technical retrospective tackling real-time enterprise intrusion scenarios. Over 6 hours, industry threat analysts dissected sovereign cloud security, generative AI vector exploits, and quantum-safe cryptographic handshakes. Key students solved live capture-the-flag (CTF) perimeter challenges.
+            </p>
+</div>
+<!-- Speaker Notes & Asset Downloads -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">record_voice_over</span>
+                Guest Speaker Notes &amp; Highlights
+              </div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1">
+<li>• <strong>Dr. Aris Thorne (NIST Fellow):</strong> "Quantum attack vectors will necessitate TLS post-quantum migration before 2028."</li>
+<li>• <strong>Elena Vance (CISO, CyberMetric):</strong> "Zero trust in campus networks reduces lateral attack surface by 78%."</li>
+</ul>
+</div>
+<div class="flex flex-col justify-between space-y-2">
+<span class="font-label-sm text-label-sm font-bold uppercase text-on-surface-variant">Recap Artifacts</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">download</span>
+<span>Slide Deck (PDF, 42MB)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">videocam</span>
+<span>Keynote Recording (1080p)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">terminal</span>
+<span>CTF Sandbox Repo</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo Gallery & Winners Row -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Thumbnail gallery -->
+<div class="md:col-span-7">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant uppercase tracking-wider block mb-2">
+                Event Photo Gallery (3 of 44 shots)
+              </span>
+<div class="grid grid-cols-3 gap-2">
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="University cybersecurity symposium with an expert speaker pointing at blue illuminated network topology diagrams on an oversized lecture screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkZySWTb-8VjWJvzgu7GQDcmW1_H_S65yc4pXudBHXECIIr06dTWH_bDhWqUVlbV2bwXo4Ykz6sG-mjGGc6110L0DxND_1hrpbkqjMIPmgQIdiIrA2WYEtNSQdwMiwIwgwsR-KR0H6BBj8q_MpW4ou8mD6ehYNzc-A8jp1xNrw6OO2bWVa1kAi0Hfl8XV3_w9XgdNWR4saKFsxKGMJIK4nsHDm90DH6Di0JbK4DtU8"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Undergraduate student team collaboratively hacking during cyber security Capture The Flag challenge with dual monitors and code matrices." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7lszAG7WY6PlK7RjA45ZCZG43ee9xVd1czsgqYy1Hs0ta2pmkYPNwvWdzuv1vpENsqa2LtnSX02_a0ZDBSJkYV8Mf59qGHivcf7wbo1q53NFlTMjpEYuPqbaIf7aq65sHvg009wG-vHa5SwqYe-Ey7cZ6reqadmYGYCtNbLEGSG6Y-aBKlf6g4EZG0Fx4akLcdRQu6f-UdiszhHbv0ze6eGYU99ZNIYX22DALXfpx"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Panel discussion of industry cybersecurity professionals holding microphones in front of university students in a tiered modern amphitheater." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1QuzQxGWUIOW8SG1NypAxgnanGzCD_5ilD51-FtaXsYwm0KvjZY3Py9y9rMky9IS1yubo_Zqb6tyzVhsLxTOV26Ij9kWQbfdhSainzV4kMvSjrSJtc2hnsCg2gunxLudZt4AEHExPumge2ZpW614pzDRj2oczYkJ4tAYBsl2L3VdUvtdaZKWeLQ_KpqfGrM7CLAQLLZDE3Od4r-DSdoPtVSVRgXUxQu2zgmWQ7JOk"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center text-on-primary font-label-sm text-label-sm font-bold">
+                    +41 More
+                  </div>
+</div>
+</div>
+</div>
+<!-- Winner announcement -->
+<div class="md:col-span-5 bg-surface-container p-space-sm rounded-xl">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-amber-500">military_tech</span>
+<span class="font-label-md text-label-md font-bold text-primary">CTF Defense Champions</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong>1st: NullPointerSec</strong> (CS Senior cohort)<br/>
+<span class="text-on-surface-variant">Solved 19/20 exploit flags in 3h 11m</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- RECAP CARD 2: Campus Autumn Cultural Night -->
+<article class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Date Badge & Meta -->
+<div class="lg:col-span-3 flex flex-col justify-between space-y-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center text-center shadow-xs">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Oct</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary leading-none">12</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                  Concluded
+                </span>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Fall Gala &amp; Arts</div>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+<span>University Amphitheater &amp; Plaza</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">groups</span>
+<span>1,200+ Attendees</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">theater_comedy</span>
+<span>Student Life &amp; Diversity Council</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface ml-1">4.95 / 5.0</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">540 Reviews</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 99%;"></div>
+</div>
+</div>
+</div>
+<!-- Content -->
+<div class="lg:col-span-9 flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold uppercase">Cultural Celebration</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">Campus Community</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Archive ID: CLTR-2026-F4</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs font-bold">
+              Campus Autumn Cultural Night: Harmonizing Global Traditions
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Representing 34 international student associations, the annual Autumn Gala featured authentic acoustic performances, folk choreography, culinary exhibitions, and a traditional costume runway. Over 15 artisan booths showcased heritage crafts under festival fairy lights.
+            </p>
+</div>
+<!-- Notes & Links -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">campaign</span>
+                Dean's Address &amp; Commendation
+              </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                "Our global mosaic is what fuels creative excellence at Campus Connect. Tonight proved that diverse perspectives produce our university's finest harmonies." — <em>Dr. Sophia Mercer, VP Student Affairs</em>
+</p>
+</div>
+<div class="flex flex-col justify-between space-y-2">
+<span class="font-label-sm text-label-sm font-bold uppercase text-on-surface-variant">Recap Artifacts</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">movie</span>
+<span>Performances Highlights (4K)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">menu_book</span>
+<span>Culinary Guidebook (PDF)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo Gallery & Recognition -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-7">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant uppercase tracking-wider block mb-2">
+                Event Photo Gallery (3 of 86 shots)
+              </span>
+<div class="grid grid-cols-3 gap-2">
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Traditional dancers in vibrant colorful silks performing under warm stage lights on an open-air amphitheater with cheering students." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUl1DvWjke4GmmnThdc6QYODZ1w46PP76iFmaGZmkthG-h4NKSvblEAPivLqA31xtMcFUukM3YCvUeg29E9xDaD48iF2hyAoH4yRg1fxuFQXpfBwlw9SZwBiPLg07SJ_csckJ05Lq2mJvj-WccV2D7gT_YrDaDSCBhJUYHN08ZRCQ75PlqKSH4zYVgcJGHJg35w40Qsns8zVp4g0eZPtZd6xqQ_hHSxcLDIpcW4g0L"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="International student food festival pavilion serving steaming traditional dishes with ornate decorative lanterns and campus architecture in background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcrP90h8f-oTpQ3ZqjoCTYPN-gnGOrOf43BCA1rLsdsfuUJ8gwVjtcfVi2lyAQK9aC4wTPvbLs9jrrJv3q-7hLC3NNO1UsiXYe8-2PJEyTsZGB_BoGLz9fWL4hQqaB-BMvJAsf71xh8_o8NP9pSlN3aQp2KN4K1ivWHrpHy1JWwgZUEqQSL6U2lq6CCvvVU8c70pzLi-MM3FjsYjm5U08liHnJfWjyaj73587oTLqG"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Large audience of university students waving phone flashlights during an acoustic outdoor evening concert under autumn trees." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGMxburmUseqSTQf3NJRmIsvNHf6OSRUrxMRe0u166Tg4FQ1YXSWhkBq10YKYQhotzkkSDtzj4lvIAbY9uOxJqYj20PxHMK_0usAwBb03E2d6WVquNXRwippfRFRvCr546i9WjiGMvu_eaHuY-il6XwfSjruQsEiuUBu0GmCHWt8CZdig1Mhkn25XPLHipZUMxnAvmwPikZnA98P2C4eAxNlkX0pMJKkevue56lE0U"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center text-on-primary font-label-sm text-label-sm font-bold">
+                    +83 More
+                  </div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container p-space-sm rounded-xl">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-amber-500">celebration</span>
+<span class="font-label-md text-label-md font-bold text-primary">Best Showcase Pavilion</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong>South Asian Student Union (SASU)</strong><br/>
+<span class="text-on-surface-variant">Audience Choice &amp; Visual Design Honor</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- RECAP CARD 3: Venture Pitch Day -->
+<article class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-3 flex flex-col justify-between space-y-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center text-center shadow-xs">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Sep</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary leading-none">29</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                  Concluded
+                </span>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Entrepreneurship Lab</div>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+<span>Innovation Incubator Hub, Floor 4</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">handshake</span>
+<span>28 Angel Investors &amp; VCs</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">school</span>
+<span>School of Business &amp; SEAS</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface ml-1">4.88 / 5.0</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">190 Reviews</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-9 flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold uppercase">Startup Competition</span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Seed Funding</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Archive ID: VENT-2026-F2</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs font-bold">
+              Venture Pitch Day 2026: Campus Founders &amp; Seed Acceleration
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Twelve student-led startups delivered 5-minute lightning pitches to regional venture partners. Pitched technologies ranged from agricultural satellite monitoring to algorithmic peer tutoring software, resulting in over $220,000 in syndicated seed pledges.
+            </p>
+</div>
+<!-- Notes & Links -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">lightbulb</span>
+                Lead Investor Feedback &amp; Takeaways
+              </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                "Campus Connect founders are demonstrating genuine product-market fit earlier than ever. Unit economics were rigorously defended across all semi-finalists."
+              </p>
+</div>
+<div class="flex flex-col justify-between space-y-2">
+<span class="font-label-sm text-label-sm font-bold uppercase text-on-surface-variant">Recap Artifacts</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">table_chart</span>
+<span>Investor Pitch Book (PDF)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">videocam</span>
+<span>Pitch Sessions Video Reel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo Gallery & Winners -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-7">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant uppercase tracking-wider block mb-2">
+                Event Photo Gallery (3 of 32 shots)
+              </span>
+<div class="grid grid-cols-3 gap-2">
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Student entrepreneur standing confidently on stage pitching with presentation slide detailing clean tech startup valuation and user metrics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgeiXOac4XBTrko9GWOK5wyw52IyJ-l1wD1d5vqQrvaWwcOBfu1_cucxaj9ryJ5snrPuMqO4cHvqe1iE_mPj_V1TaPXhJjWnCpyo1H8XygRAUnU6kD_d_RCIqoiMhNT41GyDS9Bvt9bYgikx8Ohmx3maGxnOMBf-4DyKS4zh2D8j7MDNKvsCKquwZxhKHEXplkRPl3pDDu7mj3gUT23WyxCh0xxG_jskM3rNZUS4Ng"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Venture capital panel judges listening attentively with laptops and taking notes in university incubator lecture hall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF8CDONDV2xBcub96QqhwiH3EX10mIx5NGovxaVYmEMJlLE91NoDnkKI8-XEqAnN2YXK4M_P6gD4Yl-lCP0BbTvV7zpHyGAcnlGo63ftpdncXHW0RGTrhiVGD0VAmMaYMF82inRmkzTr900DBvFA-zN2k7UxWISI6LScnskFziKgQIzMjDn60TPB0owPzS4RXzlE1tydc3-O2Ln1dMnr2EhlvADhMct1M6ycc-T5GN"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Founding team celebrating with a giant novelty check for seed acceleration grant at university stage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsyDihpszJLbKt1FTVWviS1TynvQzBRs66MoDe7gfFh4hNKWBp1rJTWXf5deHowEr3zG1FCDrteQph2m83-GVPHwSX4px4rM-Nc7dZQBPyn8XFP2_xlL6LvLvyR6MUdQHyNMENDSX5v0hA-hSWkPFVAZSKztIXzmWaqXBULhykgJFgFjQ0ST6-Lk9kY0msfx7-JwYabbN1a6oc7XQjlaBP6muLaIX2-HQo7zcZ0KuB"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center text-on-primary font-label-sm text-label-sm font-bold">
+                    +29 More
+                  </div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container p-space-sm rounded-xl">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-secondary">monetization_on</span>
+<span class="font-label-md text-label-md font-bold text-primary">Grand Prize ($50k Incubator Grant)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong>VerdeGrid AI</strong><br/>
+<span class="text-on-surface-variant">Smart microgrid storage automation for university dorms</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- RECAP CARD 4: Inter-Collegiate Sports Meet -->
+<article class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<div class="lg:col-span-3 flex flex-col justify-between space-y-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="flex items-center gap-space-sm">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-lg flex flex-col items-center justify-center text-center shadow-xs">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Sep</span>
+<span class="font-headline-md text-headline-md font-extrabold text-primary leading-none">19</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-sm text-label-sm font-semibold">
+                  Concluded
+                </span>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Varsity Athletics</div>
+</div>
+</div>
+<div class="mt-space-md space-y-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
+<span>University Olympic Track &amp; Field</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">sports_score</span>
+<span>16 Universities Represented</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">fitness_center</span>
+<span>Intercollegiate Athletic Board</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest p-space-sm rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold text-on-surface ml-1">4.91 / 5.0</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">420 Reviews</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 97%;"></div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-9 flex flex-col justify-between space-y-space-md">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold uppercase">Varsity Championship</span>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Track &amp; Field</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Archive ID: ATH-2026-F1</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mt-space-xs font-bold">
+              Inter-Collegiate Sports Meet: 2026 Fall Invitational Trophy
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs leading-relaxed">
+              Highlighting exceptional stamina, cross-disciplinary sportsmanship, and two broken state collegiate records in the 4x400m relay and women's pole vault. Campus Connect athletes secured 14 gold, 9 silver, and 6 bronze medals to lift the aggregate championship shield.
+            </p>
+</div>
+<!-- Notes & Links -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div>
+<div class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary">timer</span>
+                Record-Setting Athletic Timings
+              </div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1">
+<li>• Men's 4x400m: <strong>3:03.12</strong> (New State Record)</li>
+<li>• Women's High Jump: <strong>1.89m</strong> (Campus Record)</li>
+</ul>
+</div>
+<div class="flex flex-col justify-between space-y-2">
+<span class="font-label-sm text-label-sm font-bold uppercase text-on-surface-variant">Recap Artifacts</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">scoreboard</span>
+<span>Full Scoring Matrix (PDF)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">play_circle</span>
+<span>Track Finals Broadcast</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Photo Gallery & Winners -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<div class="md:col-span-7">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant uppercase tracking-wider block mb-2">
+                Event Photo Gallery (3 of 115 shots)
+              </span>
+<div class="grid grid-cols-3 gap-2">
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="College track athlete diving across the finish line during the final leg of a sprint relay with stadium spectators cheering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmv7WvDrQyz89oBlJGUTpvLOoxErpoMQtuEQsInk-Q1r_14NE8ngRDomQAbMdAQDfBkHZ2gbD3ejQX-yAzaCm2Q3wDoIOh3xwHLUJIZzDH9OJU-kG5qcX-ixpy3n4k2w6uvvhHJM21XlcAXnpaFBA3VqAqI2NGJLf7qV4v0xPm2eo2I1T1tB5oSgkuVZTedvMnqQ3Sk3PHHLwph3I4sRI7gPkn-N-2kLLIhkxzg5LJ"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Athletic awards ceremony on modern sports field podium with student athletes wearing medals holding university trophy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBajI08f2VlrHq61hv-X3lj2wOBwoEhvc7N7sr7idYFsVZvSVTGinyvxd0MAuUUenEtYeIhm4BWyCX_LUlHLCLFraIo196_5oi5TNBxzBHEK_ixHrZdgW2iVZxFuZA_ozzfQBkXV43Y7TXl1xFX82-U2ViU4w4o1-KZOGQXkN9NNS9VQDSWc17f_zzGG03MFDBpUfihh_Qm881cijsTD56PPAXACJr-Hlk-aUeKXJ0K"/>
+</div>
+<div class="relative h-20 rounded-lg overflow-hidden group cursor-pointer shadow-xs">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="High energy collegiate basketball finals match in dynamic motion blur with university arena crowd." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBz65g5Ita6RGPZ8dW6vXJTlIFAUJAoNLgv-Mr9I-gAsG4eySXZyQTmATNdF9D7sxdMZaAHjEs6ogPlMrgeRs3rUsPUcflsbv8meRx_OgDxnw4b-KYThUEXxv1NtVlu46CbZ9BhbAqGJUBgnZKR-YM8se87BZuvlS6ctITO9BhJP7CMB3rj2HwMsI1qPk6PHn2Q1QS1ayfCi1bBATzZbevPJyy5ymsBauQoFiKQSbqL"/>
+<div class="absolute inset-0 bg-primary/40 flex items-center justify-center text-on-primary font-label-sm text-label-sm font-bold">
+                    +112 More
+                  </div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 bg-surface-container p-space-sm rounded-xl">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-amber-500">emoji_events</span>
+<span class="font-label-md text-label-md font-bold text-primary">Aggregate Champions</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong>Campus Connect Hawks (Host)</strong><br/>
+<span class="text-on-surface-variant">Overall Championship Trophy • 138 Team Pts</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Downloadable Certificates & Participation Credentials Vault -->
+<section class="px-space-xl pb-space-2xl" id="certificates">
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+<div>
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Verified Student Transcripts</span>
+<h2 class="font-headline-md text-headline-md font-bold text-primary mt-1">
+            Participation Badges &amp; Official Completion Certificates
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            All registered attendees from Fall 2026 can download cryptographically signed PDF certificates and export W3C Verifiable Credentials to LinkedIn or your student e-Portfolio.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Verify by Hash</span>
+</button>
+<button class="px-space-md py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-secondary-container transition-all flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_download</span>
+<span>Download All (Zip)</span>
+</button>
+</div>
+</div>
+<!-- Certificate Grid Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Credential Item 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between space-y-space-md">
+<div>
+<div class="w-10 h-10 rounded-lg bg-primary text-on-primary flex items-center justify-center mb-space-sm shadow-xs">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<div class="font-label-sm text-label-sm font-bold text-secondary uppercase">Cybersecurity Summit</div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary mt-1">Attendee &amp; Lab Fellow</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Issued Oct 19, 2026 • 6 CPE Hours</p>
+</div>
+<button class="w-full py-2 px-space-sm rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>PDF (Signed)</span>
+</button>
+</div>
+<!-- Credential Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between space-y-space-md">
+<div>
+<div class="w-10 h-10 rounded-lg bg-secondary text-on-secondary flex items-center justify-center mb-space-sm shadow-xs">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div class="font-label-sm text-label-sm font-bold text-secondary uppercase">Robotics Championship</div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary mt-1">Competitor Credential</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Issued Oct 25, 2026 • IEEE Endorsed</p>
+</div>
+<button class="w-full py-2 px-space-sm rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>PDF (Signed)</span>
+</button>
+</div>
+<!-- Credential Item 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between space-y-space-md">
+<div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-space-sm shadow-xs">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+</div>
+<div class="font-label-sm text-label-sm font-bold text-secondary uppercase">Autumn Cultural Gala</div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary mt-1">Volunteer &amp; Organizer</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Issued Oct 13, 2026 • 12 Service Hrs</p>
+</div>
+<button class="w-full py-2 px-space-sm rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>PDF (Signed)</span>
+</button>
+</div>
+<!-- Credential Item 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex flex-col justify-between space-y-space-md">
+<div>
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center mb-space-sm shadow-xs">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+</div>
+<div class="font-label-sm text-label-sm font-bold text-secondary uppercase">Venture Pitch Day</div>
+<h4 class="font-label-lg text-label-lg font-bold text-primary mt-1">Founders Lab Delegate</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Issued Sep 30, 2026 • Incubator Pass</p>
+</div>
+<button class="w-full py-2 px-space-sm rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm font-semibold hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>PDF (Signed)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript for Filtering & Smooth Nav -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const deptFilter = document.getElementById('dept-filter');
+      const semesterFilter = document.getElementById('semester-filter');
+
+      // Subtle interaction feedback on filter change
+      if (deptFilter && semesterFilter) {
+        const handleFilterChange = () => {
+          const cards = document.querySelectorAll('article');
+          cards.forEach((card, index) => {
+            card.style.opacity = '0.5';
+            setTimeout(() => {
+              card.style.opacity = '1';
+            }, 100 + index * 40);
+          });
+        };
+
+        deptFilter.addEventListener('change', handleFilterChange);
+        semesterFilter.addEventListener('change', handleFilterChange);
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] py-space-xl px-space-xl"><div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-lg text-on-surface-variant font-body-sm text-body-sm"><div class="flex items-center gap-space-xs font-label-md text-label-md text-primary"><span class="material-symbols-outlined text-[20px]">school</span><span>Campus Connect Academic Platform</span></div><div class="flex flex-wrap items-center justify-center gap-space-lg"><a class="hover:text-primary transition-colors" href="#">Computer Science Dept</a><a class="hover:text-primary transition-colors" href="#">Mechanical &amp; Aerospace</a><a class="hover:text-primary transition-colors" href="#">Electrical Engineering</a><a class="hover:text-primary transition-colors" href="#">Interactive Campus Map</a><a class="hover:text-primary transition-colors" href="#">Alert Preferences</a></div><div class="font-label-sm text-label-sm">© 2026 Campus Connect. All rights reserved.</div></div></footer></div></body></html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary-fixed-dim": "#6bd8cb", "tertiary": "#001c19", "on-error": "#ffffff", "on-surface": "#191c1e", "surface-container-highest": "#e0e3e5", "on-tertiary-fixed-variant": "#005049", "surface-bright": "#f7f9fb", "on-secondary-fixed-variant": "#002fc9", "error": "#ba1a1a", "on-surface-variant": "#45464e", "on-primary-fixed": "#0c1a3b", "primary-fixed-dim": "#b9c5f0", "surface-container-low": "#f2f4f6", "surface": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#f4f3ff", "on-background": "#191c1e", "surface-variant": "#e0e3e5", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "secondary": "#1840e6", "surface-container": "#eceef0", "on-secondary": "#ffffff", "on-primary": "#ffffff", "on-secondary-fixed": "#00105b", "inverse-surface": "#2d3133", "on-primary-container": "#8693bb", "error-container": "#ffdad6", "on-tertiary-container": "#2ea498", "tertiary-fixed": "#89f5e7", "tertiary-container": "#00332e", "outline": "#75777f", "secondary-fixed-dim": "#bac3ff", "surface-tint": "#515d82", "primary-fixed": "dae2ff", "on-tertiary-fixed": "#00201d", "inverse-on-surface": "#eff1f3", "background": "#f7f9fb", "secondary-fixed": "#dee0ff", "secondary-container": "#3d5dff", "primary": "#071637", "inverse-primary": "#b9c5f0", "primary-container": "#1e2b4d", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#394669", "surface-dim": "#d8dadc", "outline-variant": "#c6c6cf" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-mobile": "1rem", "margin": "2rem", "space-md": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-xl": "2rem", "space-sm": "0.5rem", "gutter": "1.5rem", "space-2xl": "3rem", "space-xs": "0.25rem" }, "fontFamily": { "headline-display-mobile": [ "Plus Jakarta Sans" ], "label-sm": [ "Plus Jakarta Sans" ], "label-md": [ "Plus Jakarta Sans" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "headline-md": [ "Plus Jakarta Sans" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-display": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "label-lg": [ "Plus Jakarta Sans" ], "body-md": [ "Inter" ] }, "fontSize": { "headline-display-mobile": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "label-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "700" } ], "label-md": [ "13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "600" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "headline-display": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-lg": [ "15px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-lg flex items-center gap-space-sm"><img alt="Campus Connect Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCLyjMIEKyo9wZN5roz68AtzeEaTA2xIcvAm0clmEpCLMKGhFE2MatWlwzgIB2KJTyzYFPF9f4iF7HEiLsGBJGFqGZy_RJfj0GzPB8x0RpS7bqXu2SYYiAUb2m5DLbSfrYbSsnwsgGVRdHR-1uBD2B4yiYCqYENsWHAR8WZZRb6tKJIKLc2GH4x5r4azpupElWYtRrq3td9YU-WE5n0xZj0kkBOCSR2yKze2CawBnN4Tw"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">Campus Connect</span></div><div class="px-space-md py-space-sm"><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">location_on</span><select class="w-full bg-transparent font-label-sm text-label-sm text-on-surface focus:outline-none cursor-pointer"><option>Main University Campus</option><option>North Campus Engineering</option><option>South Medical Center</option></select></div></div><nav class="flex-1 px-space-md py-space-sm space-y-space-xs" data-active-classes="bg-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="overview" href="#"><span class="material-symbols-outlined">dashboard</span><span>Home / Overview</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-secondary-container text-on-secondary font-label-lg text-label-lg rounded-lg" data-path="upcoming-events" href="#"><span class="material-symbols-outlined">calendar_month</span><span>Upcoming Events</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="recent-events" href="#"><span class="material-symbols-outlined">history_edu</span><span>Recent Events</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="workshops" href="#"><span class="material-symbols-outlined">psychology</span><span>Workshops</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="branch-events" href="#"><span class="material-symbols-outlined">hub</span><span>Branch Events</span></a></nav><div class="p-space-md space-y-space-sm"><button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary transition-all" type="button"><span class="material-symbols-outlined text-[18px]">notifications_active</span><span>Subscribe to Alerts</span></button><button class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md bg-surface-container-low text-primary font-label-md text-label-md rounded-lg hover:bg-surface-container-high hover:text-on-surface transition-all" type="button"><span class="material-symbols-outlined text-[18px]">filter_list</span><span>Filter by My Branch</span></button></div><div class="px-space-md py-space-sm bg-surface-container-low mx-space-md mb-space-md rounded-lg flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></div><span class="font-label-sm text-label-sm text-on-surface-variant">Spring Semester 2026</span></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="w-full max-w-md"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-space-md text-outline pointer-events-none text-[20px]">search</span><input class="w-full h-11 pl-11 pr-space-md rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary transition-all" placeholder="Search events, workshops, clubs, branches..." type="search"/></div></div><div class="flex items-center gap-space-lg"><button class="relative p-space-xs rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-error ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-sm"><div class="flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface">Maya Patel</span><span class="font-label-sm text-label-sm text-on-surface-variant">CS '26</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv-AfSEddyO3MykqEhGtCmVroOJrnXZ--5N-Ei5yrU77Y-CcFsTF-s3Boea2okXpXnGX8dKlKYgIwoNBIKHUkF8ii0iRerV8mFtoO_9eUEYTi_14cb5eYwnMI3Fwl3DlcFa-1wdFpEI91cmOs8J6w3oZVgmdYEYTNdUHw6Adv3pLorb9k5a2oOnGRWXClBpZVw65AKEH12YrWKFoxJAiD1Bj74sFWh_viw-zS8s3Ew"/></div></div></header><main class="w-full pt-16 flex-1 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Utility Context Bar -->
+<div class="w-full px-space-xl py-space-md flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[16px]">event_available</span>
+<span>Campus Registry / Spring 2026 Academic Term</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Upcoming Campus Events</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+        Explore symposia, competitions, and technical workshops across departments. Subscribe to real-time seat alerts and academic calendar sync.
+      </p>
+</div>
+<!-- Filter Control Bar -->
+<div class="flex flex-wrap items-center gap-space-sm bg-surface-container-lowest p-space-xs rounded-xl shadow-sm">
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-outline">date_range</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer">
+<option>Next 30 Days (Nov - Dec 2026)</option>
+<option>This Weekend</option>
+<option>Semester End (Jan 2027)</option>
+</select>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-outline">account_tree</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer">
+<option>All Branches &amp; Faculties</option>
+<option>Computer Science &amp; Eng (CSE)</option>
+<option>Mechanical &amp; Aerospace (MAE)</option>
+<option>Electrical &amp; Electronics (ECE)</option>
+<option>Biotechnology &amp; Life Sciences</option>
+</select>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container-low rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-outline">category</span>
+<select class="bg-transparent font-label-md text-label-md text-on-surface focus:outline-none cursor-pointer">
+<option>All Formats</option>
+<option>Hackathons &amp; Competitions</option>
+<option>Keynotes &amp; Tech Summits</option>
+<option>Workshops &amp; Labs</option>
+<option>Cultural &amp; Arts</option>
+</select>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm hover:bg-primary transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Apply</span>
+</button>
+</div>
+</div>
+<!-- Main Grid Workspace: Left (Events List & Detailed View), Right (Flowchart Alert Flow Modal/Card) -->
+<div class="w-full px-space-xl py-space-md grid grid-cols-1 xl:grid-cols-12 gap-space-xl">
+<!-- Left Column: Master Calendar Feed & Active Event Detailed Card (8 cols) -->
+<div class="xl:col-span-7 flex flex-col space-y-space-xl min-w-0">
+<!-- Primary Active Event (Selected in Flow) -->
+<section class="flex flex-col bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Event Header Banner with Imagery Scrim -->
+<div class="relative w-full h-64 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vibrant collegiate hackathon in a modern university auditorium filled with bright computer monitors, ambient blue and teal LED strip lighting, students actively collaborating in coding teams with laptops, banners reading CodeCanvas in high-contrast crisp architectural interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUWWdZP2O4kNmFKSNg89WpaJioNU3t_9HRRz9_gTOGnhaI8JWXBV6vU9I9eAzX5aIo12IadlslSKwGQ0HzvFsXjpte1wgjaldz2ws_t3ceMQbiVXSxhyjqm5jyzhDXtFSNrDPn81Xfr8Fu7ZW2bJFXrHsZO6PWqFS6ce59qiL4SwNgeegYXA5V6Dk1VszasBdVmr6TS2_LlRnZ3ymyyS8gPlZEphkSB2V8YCUMQd4p"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent"></div>
+<!-- Badges on Image -->
+<div class="absolute top-space-md left-space-md flex items-center gap-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm uppercase tracking-wide">
+              Featured Competition
+            </span>
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+              248 Seats Left
+            </span>
+</div>
+<!-- Date Badge anchored bottom left -->
+<div class="absolute bottom-space-md left-space-md flex items-end gap-space-md">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-lg shadow-md flex flex-col items-center justify-center text-center p-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase leading-none font-bold">NOV</span>
+<span class="font-headline-sm text-headline-sm text-primary leading-tight font-extrabold">04</span>
+</div>
+<div class="text-surface">
+<div class="font-label-sm text-label-sm text-tertiary-fixed font-medium uppercase tracking-wider">
+                10:00 AM – 4:00 PM EST • In-Person
+              </div>
+<h2 class="font-headline-md text-headline-md text-surface font-bold tracking-tight">
+                Annual Collegiate Hackathon 2026: CodeCanvas
+              </h2>
+</div>
+</div>
+</div>
+<!-- Event Details Expanded Card Body -->
+<div class="p-space-lg flex flex-col space-y-space-lg">
+<!-- Metadata Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm bg-surface-container-low p-space-md rounded-lg">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[22px]">location_on</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Venue &amp; Hall</span>
+<span class="font-label-md text-label-md font-semibold truncate">Auditorium Hall B, Tech Center</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[22px]">groups</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Host Organizing Body</span>
+<span class="font-label-md text-label-md font-semibold truncate">CSE &amp; IEEE Student Branch</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-tertiary-container text-[22px]">verified</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Eligibility</span>
+<span class="font-label-md text-label-md font-semibold text-tertiary-container truncate">Free / All Uni Students</span>
+</div>
+</div>
+</div>
+<!-- Description Section -->
+<div class="flex flex-col space-y-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary">Overview &amp; Objective</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              CodeCanvas 2026 brings together over 400 collegiate developers, designers, and systems architects to build real-world open-source tools for modern campus automation, sustainable municipal microgrids, and local student welfare initiatives.
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Teams of up to four may register. Cloud infrastructure credits, developer sandboxes, hardware testing kits, and hot meals will be provided at zero cost thanks to engineering industry sponsorships.
+            </p>
+</div>
+<!-- Agenda Timetable Breakdown -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary">Hourly Schedule Agenda</h3>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Track 1 &amp; Main Stage</span>
+</div>
+<div class="space-y-space-xs">
+<div class="flex items-start gap-space-md p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<span class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap w-24">10:00 AM</span>
+<div class="flex-1">
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Opening Keynote &amp; Problem Statements</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Dean of Computer Engineering &amp; IEEE Faculty Advisor introduce hack criteria.</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Plenary</span>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<span class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap w-24">11:15 AM</span>
+<div class="flex-1">
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Team Assembly &amp; Sprint 1 Kickoff</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">API key distribution, Docker dev containers initialized, mentor check-in #1.</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Lab Floor</span>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<span class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap w-24">01:30 PM</span>
+<div class="flex-1">
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Lightning Workshop: Cloud Edge Microservices</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Guest Architect session from Cloud Native Student Chapter. Optional 30 min.</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed">Specialized</span>
+</div>
+<div class="flex items-start gap-space-md p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container transition-all">
+<span class="font-label-md text-label-md text-secondary font-bold whitespace-nowrap w-24">03:15 PM</span>
+<div class="flex-1">
+<div class="font-label-lg text-label-lg text-on-surface font-semibold">Judging Expo &amp; Live Project Demos</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Top 8 finalist teams pitch on the main projection wall to industry adjudicators.</div>
+</div>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant">Auditorium</span>
+</div>
+</div>
+</div>
+<!-- Keynote Mentors & Speakers -->
+<div class="flex flex-col space-y-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary">Guest Speakers &amp; Lead Mentors</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex items-center gap-space-md p-space-sm bg-surface-container-low rounded-lg">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional studio headshot of Dr. Aris Thorne, female artificial intelligence engineering researcher wearing round glasses, serene expression, clean corporate navy backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSrGw6jr4zStoJwxbxoqUnyxzdBGcEaaL9AQJu0I46LFo5DhK5GfWcB31Gtdk4CyRJtg9v2DAjBWuAQHSNFjwSJfg5hB1BG2uAQYi8pkp6cglpQ_NK3ZRKH60B-72U3xr5cpJEWNxFIFe4Zp9_k9Lla5XxzGizlZ9M6CN7RTtO-efGAxHdG8LN2BkIgExqHlU8McKDqdVrYM7fzTHIhWo8Q_ndR9nyoUjTNnIC5TsS"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Dr. Aris Thorne</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Chair, AI Ethics Research Initiative</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md p-space-sm bg-surface-container-low rounded-lg">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional portrait of Marcus Vance, male software systems lead with short dreadlocks, smiling warm attire, natural ambient daylight background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5D5gEH4Z8--Lr3KK3B9ugNKlIExLfTeKsNToikVOd0ehr8jWH1bKm2WlROsvk25EFTM2fw3zCbb2cit5wUXFM_G4YMdJ2thHxXL11Bvqfa_FvFLdVz2vVLH-07xQpAIgLj2M6BiNYfQRTmqmApX2EFbef7xabdjLPW9V46dv0NEuwuexPR66P358uHYKP-H2nDP6uhEn7Q_BHZvvX3fggtV2gdO7LJNGooPaw7Os0"/>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">Principal Cloud Architect, OpenGrid</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Map & Navigation Preview -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary">Auditorium Hall B Location</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Building 4, Floor 2 • North Campus Wing</span>
+</div>
+<div class="w-full h-44 rounded-lg bg-surface-container-high relative overflow-hidden flex items-center justify-center" data-location="North Campus Engineering Auditorium Hall B" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqrLP4jpbnyq9vVrh7To7GAeKIPxigCoghkZnqUK85afDZ4zs4Vc4O4yp-x75WlOo51SQzcHXnN7kufmUl8u0hjoipuLAK5km78R5smDktrnF9uBu6K4BSZMuBT7tImz985KMNCih9BWLNlli10zApROvb0lJ6VuQt5PspdqpsrbyymVBvQsX0mAPv7qe07DHSxMa_hfbcyasO-QDGdDbSitNJjB2VKN08gLaC1zRl')">
+<div class="bg-surface-container-lowest/95 backdrop-blur-md px-space-md py-space-xs rounded-full shadow-md flex items-center gap-space-xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary">pin_drop</span>
+<span>Hall B Entryway Gate 3 (Live Navigation Active)</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar for Selected Event -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span>Complies with Spring 2026 Student Organization Codes</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download Packet</span>
+</button>
+<a class="px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary font-label-md text-label-md shadow-sm hover:bg-primary transition-all flex items-center gap-1" href="#alert-workflow">
+<span class="material-symbols-outlined text-[18px]">notification_add</span>
+<span>Set Campus Event Alert</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Feed: Other Upcoming Events List -->
+<section class="flex flex-col space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Other Scheduled Campus Events</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Curated calendar for upcoming lectures, debates, and cultural activities.</p>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold cursor-pointer hover:underline">View Full Calendar (48)</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Event Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-center p-1 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold">NOV</span>
+<span class="font-headline-sm text-headline-sm text-primary leading-tight font-extrabold">09</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm inline-block mb-1">
+                  Keynote Summit
+                </span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate hover:text-secondary cursor-pointer">
+                  Quantum Horizons Tech Summit 2026
+                </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">
+                  Distinguished faculty lectures from Aerospace and Physics on solid-state computational scaling.
+                </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-space-xs rounded-lg">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">room</span>Science Quad East</span>
+<span class="flex items-center gap-1 text-secondary font-semibold cursor-pointer" onclick="selectEventForAlert('Quantum Horizons Tech Summit 2026', 'NOV 09, 2026')">
+<span class="material-symbols-outlined text-[16px]">add_alert</span>Set Alert
+              </span>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-center p-1 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold">NOV</span>
+<span class="font-headline-sm text-headline-sm text-primary leading-tight font-extrabold">14</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm inline-block mb-1">
+                  Debate &amp; Policy
+                </span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate hover:text-secondary cursor-pointer">
+                  Inter-Collegiate Parliamentary Debate
+                </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">
+                  16 varsity forensics teams deliberate regional renewable energy policies and water rights.
+                </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-space-xs rounded-lg">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">room</span>Student Union Amphitheater</span>
+<span class="flex items-center gap-1 text-secondary font-semibold cursor-pointer" onclick="selectEventForAlert('Inter-Collegiate Parliamentary Debate', 'NOV 14, 2026')">
+<span class="material-symbols-outlined text-[16px]">add_alert</span>Set Alert
+              </span>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-center p-1 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold">NOV</span>
+<span class="font-headline-sm text-headline-sm text-primary leading-tight font-extrabold">18</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm inline-block mb-1">
+                  Fine Arts &amp; Culture
+                </span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate hover:text-secondary cursor-pointer">
+                  AuraFest Spring Cultural Auditions
+                </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">
+                  Open casting call for collegiate theater, world percussion ensembles, and digital installation artists.
+                </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-space-xs rounded-lg">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">room</span>Performing Arts Studio C</span>
+<span class="flex items-center gap-1 text-secondary font-semibold cursor-pointer" onclick="selectEventForAlert('AuraFest Spring Cultural Auditions', 'NOV 18, 2026')">
+<span class="material-symbols-outlined text-[16px]">add_alert</span>Set Alert
+              </span>
+</div>
+</div>
+<!-- Event Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div class="flex items-start gap-space-md">
+<div class="w-12 h-12 bg-surface-container-low rounded-lg flex flex-col items-center justify-center text-center p-1 shrink-0">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold">NOV</span>
+<span class="font-headline-sm text-headline-sm text-primary leading-tight font-extrabold">22</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm inline-block mb-1">
+                  Workshop
+                </span>
+<h4 class="font-headline-sm text-headline-sm text-primary truncate hover:text-secondary cursor-pointer">
+                  Autonomous Robotics Lab Showcase
+                </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">
+                  Hands-on ROS2 sensor telemetry demonstrations and rover obstacle trials on the track field.
+                </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low px-space-sm py-space-xs rounded-lg">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">room</span>Robotics High Bay Lab</span>
+<span class="flex items-center gap-1 text-secondary font-semibold cursor-pointer" onclick="selectEventForAlert('Autonomous Robotics Lab Showcase', 'NOV 22, 2026')">
+<span class="material-symbols-outlined text-[16px]">add_alert</span>Set Alert
+              </span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Flowchart Implementation Card (5 cols) -->
+<!-- Path strictly rendered: Upcoming Events -> Date/Event Name -> Event Details -> Alert -> Events -> Alert Timing -> Select Date -> Done set for alert -->
+<div class="xl:col-span-5 flex flex-col space-y-space-md" id="alert-workflow">
+<!-- Flow Visual Tracker Header -->
+<div class="bg-primary text-on-primary p-space-md rounded-xl shadow-md flex flex-col space-y-space-xs">
+<div class="flex items-center justify-between text-on-primary-container">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">Campus Alert Pipeline</span>
+<span class="font-label-sm text-label-sm">Step 4 of 4 Active</span>
+</div>
+<div class="flex items-center gap-1 text-surface font-label-sm text-label-sm overflow-x-auto py-1">
+<span class="text-tertiary-fixed-dim font-bold">Upcoming</span>
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">chevron_right</span>
+<span class="text-tertiary-fixed-dim font-bold">Event Details</span>
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">chevron_right</span>
+<span class="text-secondary-fixed font-bold">Alert Timing</span>
+<span class="material-symbols-outlined text-[14px] text-on-primary-container">chevron_right</span>
+<span class="bg-secondary px-2 py-0.5 rounded font-bold">Reminder Setup</span>
+</div>
+</div>
+<!-- Main Interactive Alert Flow Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md p-space-lg flex flex-col space-y-space-lg relative">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">Automated Notification System</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary">Set Campus Event Alert</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Configure calendar synchronization, push broadcast alerts, and custom reminder dispatch dates.
+          </p>
+</div>
+<form class="flex flex-col space-y-space-md" id="campus-alert-form" onsubmit="handleAlertSubmit(event)">
+<!-- Step 1: Selected Event -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center justify-between">
+<span>Step 1: Target Campus Event</span>
+<span class="text-secondary font-label-sm text-label-sm">Verified Event</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-space-md text-secondary text-[20px] pointer-events-none">event</span>
+<input class="w-full h-11 pl-11 pr-space-md rounded-lg bg-surface-container-low text-primary font-label-md text-label-md focus:outline-none cursor-not-allowed font-semibold" id="alert-event-name" readonly="" type="text" value="Annual Collegiate Hackathon 2026: CodeCanvas"/>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1">
+<span id="alert-event-date-display">Date: NOV 04, 2026 • 10:00 AM</span>
+<span class="text-tertiary-container font-medium">Auditorium Hall B</span>
+</div>
+</div>
+<!-- Step 2: Choose Alert Timing -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">
+              Step 2: Choose Alert Timing Window
+            </label>
+<div class="grid grid-cols-2 gap-space-xs">
+<label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-all">
+<input checked="" class="w-4 h-4 text-secondary accent-secondary" name="alert_timing" onchange="handleTimingChange('1_day')" type="radio" value="1_day"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">1 Day Before</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Recommended</span>
+</div>
+</label>
+<label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-all">
+<input class="w-4 h-4 text-secondary accent-secondary" name="alert_timing" onchange="handleTimingChange('2_hours')" type="radio" value="2_hours"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">2 Hours Before</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Arrival prompt</span>
+</div>
+</label>
+<label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-all">
+<input class="w-4 h-4 text-secondary accent-secondary" name="alert_timing" onchange="handleTimingChange('1_week')" type="radio" value="1_week"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">1 Week Before</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Prep reminder</span>
+</div>
+</label>
+<label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-all">
+<input class="w-4 h-4 text-secondary accent-secondary" name="alert_timing" onchange="handleTimingChange('custom')" type="radio" value="custom"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">Custom Date</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Manual selection</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Step 3: Date & Time Picker ("Select Date of Alert Reminder") -->
+<div class="flex flex-col space-y-space-xs bg-surface-container-low p-space-md rounded-lg" id="date-picker-block">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_clock</span>
+<span>Step 3: Select Date &amp; Time of Alert Reminder</span>
+</label>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded font-bold" id="timing-badge">Auto-calculated</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs mt-1">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Dispatch Date</span>
+<input class="w-full h-10 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="alert-date-input" type="date" value="2026-11-03"/>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1 block">Dispatch Time</span>
+<input class="w-full h-10 px-space-sm rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" id="alert-time-input" type="time" value="09:00"/>
+</div>
+</div>
+</div>
+<!-- Step 4: Notification Channels -->
+<div class="flex flex-col space-y-space-xs">
+<label class="font-label-md text-label-md text-on-surface font-semibold">
+              Step 4: Dispatch Channels
+            </label>
+<div class="space-y-space-xs">
+<label class="flex items-center justify-between p-space-xs px-space-sm rounded bg-surface-container-low cursor-pointer">
+<span class="flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">notifications</span>
+<span>Campus Connect Push Notification</span>
+</span>
+<input checked="" class="w-4 h-4 text-secondary accent-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-space-xs px-space-sm rounded bg-surface-container-low cursor-pointer">
+<span class="flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">mail</span>
+<span>University Email (<span class="font-normal text-on-surface-variant">m.patel@cs.edu</span>)</span>
+</span>
+<input checked="" class="w-4 h-4 text-secondary accent-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-space-xs px-space-sm rounded bg-surface-container-low cursor-pointer">
+<span class="flex items-center gap-2 font-label-md text-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">sms</span>
+<span>SMS Critical Alert (+1 ••• ••• 8821)</span>
+</span>
+<input class="w-4 h-4 text-secondary accent-secondary" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Submit Flowchart Button: "Done set for alert" -->
+<div class="pt-space-xs">
+<button class="w-full py-space-md rounded-lg bg-secondary text-on-secondary font-headline-sm text-headline-sm font-bold shadow-md hover:bg-primary transition-all flex items-center justify-center gap-space-sm" type="submit">
+<span class="material-symbols-outlined">notification_add</span>
+<span>Done Set for Alert</span>
+</button>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center mt-2">
+              Syncs natively to Google Calendar, Apple iCal, and Outlook.
+            </p>
+</div>
+</form>
+<!-- Dynamic Flowchart Confirmation Banner -->
+<div class="hidden transition-all duration-300 p-space-md bg-tertiary-container text-on-tertiary rounded-xl shadow-lg flex items-start gap-space-md" id="confirmation-banner">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined font-bold">check_circle</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-sm text-headline-sm text-white font-bold">✓ Alert Successfully Registered!</h4>
+<p class="font-body-sm text-body-sm text-tertiary-fixed mt-1" id="confirmation-text">
+              You will receive your campus reminder for <strong>Annual Collegiate Hackathon 2026</strong> on <strong>Nov 03, 2026 at 09:00 AM</strong>.
+            </p>
+<div class="mt-space-sm flex items-center gap-space-md">
+<button class="font-label-sm text-label-sm text-white underline hover:no-underline font-semibold" onclick="dismissConfirmation()">
+                Set another alert
+              </button>
+<button class="px-space-sm py-1 bg-surface-container-lowest text-primary rounded font-label-sm text-label-sm font-bold shadow-sm">
+                Add to Device Calendar
+              </button>
+</div>
+</div>
+</div>
+<!-- Academic Calendar Sync Info Card -->
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]">sync</span>
+<div class="text-on-surface">
+<div class="font-label-md text-label-md font-semibold">Automatic Attendance Pass</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Setting an alert pre-reserves your student gate QR pass. It will automatically load in your Campus Connect mobile wallet 12 hours prior to start.
+            </div>
+</div>
+</div>
+</div>
+<!-- Campus Organizers Callout -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-outline">campaign</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">Hosting a Branch Event?</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Submit for faculty review 7 days in advance.</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-outline-variant transition-all whitespace-nowrap">
+          Create Event
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Logic for Strict Flowchart Handling -->
+<script>
+    function handleTimingChange(type) {
+      const dateInput = document.getElementById('alert-date-input');
+      const timeInput = document.getElementById('alert-time-input');
+      const badge = document.getElementById('timing-badge');
+
+      if (type === '1_day') {
+        dateInput.value = '2026-11-03';
+        timeInput.value = '09:00';
+        badge.innerText = '1 Day Offset';
+      } else if (type === '2_hours') {
+        dateInput.value = '2026-11-04';
+        timeInput.value = '08:00';
+        badge.innerText = '2 Hours Offset';
+      } else if (type === '1_week') {
+        dateInput.value = '2026-10-28';
+        timeInput.value = '10:00';
+        badge.innerText = '7 Days Offset';
+      } else if (type === 'custom') {
+        badge.innerText = 'Custom Window';
+        dateInput.focus();
+      }
+    }
+
+    function selectEventForAlert(eventName, dateStr) {
+      document.getElementById('alert-event-name').value = eventName;
+      document.getElementById('alert-event-date-display').innerText = 'Date: ' + dateStr + ' • Scheduled';
+      
+      const targetElement = document.getElementById('alert-workflow');
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Flash highlight the input
+      const inputEl = document.getElementById('alert-event-name');
+      inputEl.classList.remove('bg-surface-container-low');
+      inputEl.classList.add('bg-secondary-fixed');
+      setTimeout(() => {
+        inputEl.classList.remove('bg-secondary-fixed');
+        inputEl.classList.add('bg-surface-container-low');
+      }, 1000);
+    }
+
+    function handleAlertSubmit(e) {
+      e.preventDefault();
+      const eventName = document.getElementById('alert-event-name').value;
+      const dateVal = document.getElementById('alert-date-input').value;
+      const timeVal = document.getElementById('alert-time-input').value;
+
+      const confBanner = document.getElementById('confirmation-banner');
+      const confText = document.getElementById('confirmation-text');
+
+      confText.innerHTML = `You will receive your campus reminder for <strong>${eventName}</strong> on <strong>${dateVal} at ${timeVal}</strong>.`;
+      confBanner.classList.remove('hidden');
+
+      // Scroll to confirmation notice
+      confBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function dismissConfirmation() {
+      document.getElementById('confirmation-banner').classList.add('hidden');
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] py-space-xl px-space-xl"><div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-space-lg text-on-surface-variant font-body-sm text-body-sm"><div class="flex items-center gap-space-xs font-label-md text-label-md text-primary"><span class="material-symbols-outlined text-[20px]">school</span><span>Campus Connect Academic Platform</span></div><div class="flex flex-wrap items-center justify-center gap-space-lg"><a class="hover:text-primary transition-colors" href="#">Computer Science Dept</a><a class="hover:text-primary transition-colors" href="#">Mechanical &amp; Aerospace</a><a class="hover:text-primary transition-colors" href="#">Electrical Engineering</a><a class="hover:text-primary transition-colors" href="#">Interactive Campus Map</a><a class="hover:text-primary transition-colors" href="#">Alert Preferences</a></div><div class="font-label-sm text-label-sm">© 2026 Campus Connect. All rights reserved.</div></div></footer></div></body></html>

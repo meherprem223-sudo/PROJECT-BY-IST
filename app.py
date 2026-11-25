@@ -10,6 +10,24 @@ load_dotenv()
 
 app = Flask(__name__)
 
+
+@app.after_request
+def add_cors_headers(response):
+    """Allow the configured frontend and local Vite dev servers to call the API."""
+    origin = request.headers.get("Origin")
+    allowed_origins = {
+        value.strip()
+        for value in os.getenv("FRONTEND_ORIGIN", "").split(",")
+        if value.strip()
+    }
+    allowed_origins.update({"http://localhost:5173", "http://127.0.0.1:5173"})
+    if origin in allowed_origins:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Vary"] = "Origin"
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    return response
+
 supabase_url = os.getenv("SUPABASE_URL")
 supabase_key = os.getenv("SUPABASE_PUBLISHABLE_KEY")
 supabase: Client | None = (
@@ -107,6 +125,9 @@ def create_registration():
     event = event_result.data
     if event is None:
         return error("Event not found", 404)
+    if event.get("status", "").lower() not in ("open", "published", "active"):
+        return error("Event is not open for registration", 409)
+
     existing = (
         supabase.table("registrations")
         .select("id")

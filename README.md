@@ -14,6 +14,21 @@ Set `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in `.env`, then run:
 
 The server listens on `http://127.0.0.1:5000`.
 
+## Run the frontend
+
+The Vite app is in `frontend/`. Start the API as above, then in another terminal:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Vite proxies `/api` requests to the Flask server on port 5000. For Vercel, set
+the project root directory to `frontend`, set `VITE_API_URL` to the deployed API
+base URL, and set `FRONTEND_ORIGIN` on the backend to the frontend's Vercel origin.
+See `frontend/README.md` for deployment details.
+
 ## Deploy to Render
 
 Create a Render Blueprint from the repository containing this folder. If this
