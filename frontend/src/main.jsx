@@ -23,12 +23,28 @@ import {
 import './style.css';
 import './navigation.css';
 
-// In development, Vite forwards /api requests to Flask. Set VITE_API_URL only
-// when the deployed frontend must call a separately hosted API directly.
-const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
+// In development, Vite forwards /api requests to Flask. In production, the
+// Render static site must call the separately hosted API (override for custom URLs).
+const API = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://events-api.onrender.com' : '')).replace(/\/$/, '');
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const VALID_PAGES = ['Explore', 'My events', 'Workshops', 'Recaps', 'Alerts'];
 const PAGE_SIZE = 30;
+
+async function readApiResponse(response) {
+  const body = await response.text();
+  let data;
+  try {
+    data = body ? JSON.parse(body) : {};
+  } catch {
+    if (body.trimStart().startsWith('<')) {
+      throw new Error(
+        'The events API returned an HTML page instead of JSON. Check that VITE_API_URL points to the backend service (https://events-api.onrender.com), then redeploy the frontend.'
+      );
+    }
+    throw new Error('The events API returned an invalid response. Please try again later.');
+  }
+  return data;
+}
 
 const initials = (s = '') =>
   s
@@ -98,7 +114,7 @@ function App() {
       try {
         const off = reset ? 0 : offset;
         const r = await fetch(`${API}/api/events?limit=${PAGE_SIZE}&offset=${off}`);
-        const j = await r.json();
+        const j = await readApiResponse(r);
         if (!r.ok) throw new Error(j.error || 'Could not load events');
         const rows = j.data || [];
         setEvents((prev) => {
@@ -127,7 +143,7 @@ function App() {
       const r = await fetch(
         `${API}/api/me/registrations?user_id=${encodeURIComponent(userId)}`
       );
-      const j = await r.json();
+      const j = await readApiResponse(r);
       if (!r.ok) throw new Error(j.error || 'Could not load registrations');
       setMine(j.data || []);
     } catch (e) {
@@ -241,7 +257,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: userId, event_id: event.id }),
       });
-      const j = await r.json();
+      const j = await readApiResponse(r);
       if (!r.ok) throw new Error(j.error || 'Registration failed');
       notify(`You're registered for ${event.title}`);
       await fetchMine();
@@ -258,7 +274,7 @@ function App() {
     setDetailLoading(true);
     try {
       const r = await fetch(`${API}/api/events/${encodeURIComponent(event.id)}`);
-      const j = await r.json();
+      const j = await readApiResponse(r);
       if (r.ok && j.data) {
         setEventDetail(j.data);
       }
@@ -279,7 +295,7 @@ function App() {
       const r = await fetch(
         `${API}/api/events/${encodeURIComponent(event.id)}/registrations?organizer_id=${encodeURIComponent(userId)}`
       );
-      const j = await r.json();
+      const j = await readApiResponse(r);
       if (!r.ok) throw new Error(j.error || 'Could not load attendees');
       setAttendees(j.data || []);
     } catch (e) {
