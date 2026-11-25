@@ -1,6 +1,9 @@
 # Campus Connect frontend
 
 Responsive React + Vite UI for the Flask events API in the parent folder.
+The sidebar and notification bell link to Explore, My events, Workshops, Recaps,
+and Alerts. Each section is addressable by a URL hash and supports browser back
+and forward navigation.
 
 ## Run locally
 
