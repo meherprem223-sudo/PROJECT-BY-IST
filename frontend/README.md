@@ -16,6 +16,13 @@ For a separately deployed frontend, set `VITE_API_URL` to the backend base URL
 backend environment to the frontend's exact origin (for example,
 `https://events.example.com`).
 
+## Deploy to Render
+
+The parent repository's `render.yaml` deploys the Flask API and this Vite app as
+one Blueprint. Render supplies the API's public URL to the frontend at build
+time, and the API allows the static site's `https://campus-connect.onrender.com`
+origin. The Vite build publishes `dist`; no frontend start command is needed.
+
 ## Deploy to Vercel
 
 1. Import the frontend's Git repository into Vercel. If the frontend is in a

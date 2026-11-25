@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: events-api
+    name: project-by-ist
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
@@ -11,13 +11,13 @@ services:
       - key: SUPABASE_PUBLISHABLE_KEY
         sync: false
       - key: FRONTEND_ORIGIN
-        sync: false
+        value: https://campus-connect.onrender.com
 
   - type: web
     name: campus-connect
     runtime: static
     rootDir: frontend
-    buildCommand: npm install && npm run build
+    buildCommand: npm ci && npm run build
     staticPublishPath: dist
     routes:
       - type: rewrite
@@ -25,4 +25,7 @@ services:
         destination: /index.html
     envVars:
       - key: VITE_API_URL
-        sync: false
+        fromService:
+          name: project-by-ist
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL

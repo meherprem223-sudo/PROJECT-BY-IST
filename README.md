@@ -26,23 +26,19 @@ npm run dev
 
 Vite proxies `/api` requests to `http://127.0.0.1:5000`. Leave `VITE_API_URL`
 empty for local development. For a separately hosted frontend, set it to the
-backend origin only, with no trailing slash (for example,
-`https://events-api.onrender.com`). The browser then calls the backend directly.
-Set `FRONTEND_ORIGIN` on the backend to the frontend's origin, without a path.
-You can provide multiple allowed origins as a comma-separated list, for example
-`https://campus-connect.onrender.com,https://campus.example.edu`.
+backend origin only, with no trailing slash. Set `FRONTEND_ORIGIN` on the
+backend to the frontend's origin, without a path. Multiple allowed origins can
+be comma-separated.
 
 ## Deploy to Render
 
-Create a Render Blueprint from the repository containing this folder. If this
-folder is the repository root, `render.yaml` configures the free Flask web
-service and the `campus-connect` static site. Set
-`SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in the service environment; the
-Blueprint prompts for these values because they are marked `sync: false`.
-Set `FRONTEND_ORIGIN` to `https://campus-connect.onrender.com` (or the actual
-static site's custom domain). Set the static site's `VITE_API_URL` to the
-backend origin, for example `https://events-api.onrender.com`, with no trailing
-slash. Render builds `frontend` and publishes `dist`.
+Create or sync a Render Blueprint from this repository. `render.yaml` configures
+the `project-by-ist` Flask service and the `campus-connect` static site. Render
+supplies the API's public URL to the frontend at build time, and the API allows
+the static site's default origin for CORS. The Blueprint prompts for
+`SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`; enter the values used by the
+working API. Render builds the frontend with `npm ci && npm run build` and
+publishes `frontend/dist`.
 
 ## Endpoints
 
