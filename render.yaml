@@ -1,31 +1,16 @@
 services:
   - type: web
     name: project-by-ist
-    runtime: python
+    runtime: docker
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: sh -c 'exec gunicorn app:app --bind 0.0.0.0:${PORT:-10000}'
+    healthCheckPath: /health
     envVars:
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_PUBLISHABLE_KEY
         sync: false
       - key: FRONTEND_ORIGIN
-        value: https://campus-connect.onrender.com
-
-  - type: web
-    name: campus-connect
-    runtime: static
-    rootDir: frontend
-    buildCommand: npm ci && npm run build
-    staticPublishPath: dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-    envVars:
-      - key: VITE_API_URL
-        fromService:
-          name: project-by-ist
-          type: web
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://project-by-ist.onrender.com,https://project-by-ist-4a5q-git-main-mukund24.vercel.app

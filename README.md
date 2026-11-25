@@ -32,13 +32,16 @@ be comma-separated.
 
 ## Deploy to Render
 
-Create or sync a Render Blueprint from this repository. `render.yaml` configures
-the `project-by-ist` Flask service and the `campus-connect` static site. Render
-supplies the API's public URL to the frontend at build time, and the API allows
-the static site's default origin for CORS. The Blueprint prompts for
-`SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`; enter the values used by the
-working API. Render builds the frontend with `npm ci && npm run build` and
-publishes `frontend/dist`.
+Create or sync a Render Blueprint from this repository. `render.yaml` deploys
+one Docker web service from the repository root. The Dockerfile builds the Vite
+frontend and copies it into the Flask image; Flask serves the frontend and API
+on the same host. Leave Render's Root Directory blank. The Blueprint prompts
+for `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY`; enter the values used by the
+working API.
+
+If you configure the service manually, choose Docker, leave Root Directory
+blank, and use `./Dockerfile`. The Docker Command is
+`sh -c 'exec gunicorn app:app --bind 0.0.0.0:${PORT:-10000}'`.
 
 ## Endpoints
 

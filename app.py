@@ -1,14 +1,16 @@
 import os
+from pathlib import Path
 from uuid import UUID
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from postgrest import APIError
 from supabase import Client, create_client
 
 load_dotenv()
 
 app = Flask(__name__)
+FRONTEND_DIST = Path(__file__).resolve().parent / "frontend" / "dist"
 
 
 @app.after_request
@@ -60,6 +62,13 @@ def handle_database_error(exc):
 
 @app.get("/")
 def index():
+    if (FRONTEND_DIST / "index.html").is_file():
+        return send_from_directory(FRONTEND_DIST, "index.html")
+    return jsonify({"service": "events-api", "status": "ok"})
+
+
+@app.get("/health")
+def health():
     return jsonify({"service": "events-api", "status": "ok"})
 
 
@@ -225,6 +234,20 @@ def event_registrations(event_id):
         .execute()
     )
     return jsonify({"data": result.data or []})
+
+
+@app.get("/<path:frontend_path>")
+def serve_frontend(frontend_path):
+    """Serve built Vite assets and client-side routes from the same origin."""
+    if frontend_path == "api" or frontend_path.startswith("api/"):
+        return error("API endpoint not found", 404)
+
+    asset = FRONTEND_DIST / frontend_path
+    if asset.is_file():
+        return send_from_directory(FRONTEND_DIST, frontend_path)
+    if (FRONTEND_DIST / "index.html").is_file():
+        return send_from_directory(FRONTEND_DIST, "index.html")
+    return error("Not found", 404)
 
 
 if __name__ == "__main__":

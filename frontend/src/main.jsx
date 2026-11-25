@@ -23,9 +23,10 @@ import {
 import './style.css';
 import './navigation.css';
 
-// In development, Vite forwards /api requests to Flask. In production, the
-// Render static site must call the separately hosted API (override for custom URLs).
-const API = (import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://events-api.onrender.com' : '')).replace(/\/$/, '');
+// In development, Vite forwards /api requests to Flask. When Flask serves the
+// built app, the empty base keeps API requests on the same origin. Set
+// VITE_API_URL only when hosting the frontend separately.
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const VALID_PAGES = ['Explore', 'My events', 'Workshops', 'Recaps', 'Alerts'];
 const PAGE_SIZE = 30;
@@ -38,7 +39,7 @@ async function readApiResponse(response) {
   } catch {
     if (body.trimStart().startsWith('<')) {
       throw new Error(
-        'The events API returned an HTML page instead of JSON. Check that VITE_API_URL points to the backend service (https://events-api.onrender.com), then redeploy the frontend.'
+        'The events API returned an HTML page instead of JSON. Check that VITE_API_URL points to the backend service, then redeploy the frontend.'
       );
     }
     throw new Error('The events API returned an invalid response. Please try again later.');

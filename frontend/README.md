@@ -18,10 +18,12 @@ backend environment to the frontend's exact origin (for example,
 
 ## Deploy to Render
 
-The parent repository's `render.yaml` deploys the Flask API and this Vite app as
-one Blueprint. Render supplies the API's public URL to the frontend at build
-time, and the API allows the static site's `https://campus-connect.onrender.com`
-origin. The Vite build publishes `dist`; no frontend start command is needed.
+The parent repository's `render.yaml` deploys this Vite app and the Flask API in
+one Docker web service rooted at the repository root. The Dockerfile builds this
+frontend and Flask serves the generated `dist` files, so browser API requests
+stay on the same origin. For a manual Render service, choose Docker, leave Root
+Directory blank, and use `./Dockerfile`. Set Docker Command to
+`sh -c 'exec gunicorn app:app --bind 0.0.0.0:${PORT:-10000}'`.
 
 ## Deploy to Vercel
 
