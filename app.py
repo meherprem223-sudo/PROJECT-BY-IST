@@ -25,7 +25,7 @@ def add_cors_headers(response):
         response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Vary"] = "Origin"
         response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
-        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
     return response
 
 supabase_url = os.getenv("SUPABASE_URL")
@@ -39,14 +39,17 @@ def error(message: str, status: int):
     return jsonify({"error": message}), status
 
 
-def valid_uuid(value) -> bool:
+def normalize_uuid(value) -> str | None:
     if not isinstance(value, str):
-        return False
+        return None
     try:
-        UUID(value)
-        return True
+        return str(UUID(value.strip()))
     except ValueError:
-        return False
+        return None
+
+
+def valid_uuid(value) -> bool:
+    return normalize_uuid(value) is not None
 
 
 @app.errorhandler(APIError)
@@ -78,25 +81,29 @@ def list_events():
     status = request.args.get("status")
     if status:
         query = query.eq("status", status)
-    result = query.order("title").range(offset, offset + limit - 1).execute()
-    return jsonify({"data": result.data, "limit": limit, "offset": offset})
+    search = (request.args.get("q") or "").strip()
+    if search:
+        query = query.ilike("title", f"%{search}%")
+    result = query.order("title").order("id").range(offset, offset + limit - 1).execute()
+    return jsonify({"data": result.data or [], "limit": limit, "offset": offset})
 
 
 @app.get("/api/events/<event_id>")
 def get_event(event_id):
     if supabase is None:
         return error("Supabase is not configured", 503)
-    if not valid_uuid(event_id):
+    normalized_event_id = normalize_uuid(event_id)
+    if not normalized_event_id:
         return error("event id must be a UUID", 400)
 
     result = (
         supabase.table("events")
         .select("id,organizer_id,title,capacity,status")
-        .eq("id", event_id)
+        .eq("id", normalized_event_id)
         .maybe_single()
         .execute()
     )
-    if result.data is None:
+    if result is None or result.data is None:
         return error("Event not found", 404)
     return jsonify({"data": result.data})
 
@@ -110,9 +117,9 @@ def create_registration():
     if not isinstance(payload, dict):
         return error("Request body must be a JSON object", 400)
 
-    user_id = payload.get("user_id")
-    event_id = payload.get("event_id")
-    if not valid_uuid(user_id) or not valid_uuid(event_id):
+    user_id = normalize_uuid(payload.get("user_id"))
+    event_id = normalize_uuid(payload.get("event_id"))
+    if not user_id or not event_id:
         return error("user_id and event_id must be UUIDs", 400)
 
     event_result = (
@@ -122,10 +129,10 @@ def create_registration():
         .maybe_single()
         .execute()
     )
-    event = event_result.data
+    event = event_result.data if event_result is not None else None
     if event is None:
         return error("Event not found", 404)
-    if event.get("status", "").lower() not in ("open", "published", "active"):
+    if (event.get("status") or "").lower() not in ("open", "published", "active"):
         return error("Event is not open for registration", 409)
 
     existing = (
@@ -145,15 +152,25 @@ def create_registration():
         .eq("event_id", event_id)
         .execute()
     )
-    if event.get("capacity") is not None and (registrations.count or 0) >= event["capacity"]:
+    capacity = event.get("capacity")
+    if capacity is not None and (registrations.count or 0) >= capacity:
         return error("Event has reached capacity", 409)
 
-    created = (
-        supabase.table("registrations")
-        .insert({"user_id": user_id, "event_id": event_id})
-        .execute()
-    )
-    return jsonify({"data": created.data[0]}), 201
+    try:
+        created = (
+            supabase.table("registrations")
+            .insert({"user_id": user_id, "event_id": event_id})
+            .execute()
+        )
+    except APIError as exc:
+        if getattr(exc, "code", None) == "23505":
+            return error("User is already registered for this event", 409)
+        if getattr(exc, "code", None) == "23503":
+            return error("User or event not found", 404)
+        raise
+
+    record = created.data[0] if created and created.data else {"user_id": user_id, "event_id": event_id}
+    return jsonify({"data": record}), 201
 
 
 @app.get("/api/me/registrations")
@@ -161,8 +178,8 @@ def my_registrations():
     """List registrations for the user_id query parameter (no auth is enabled)."""
     if supabase is None:
         return error("Supabase is not configured", 503)
-    user_id = request.args.get("user_id")
-    if not valid_uuid(user_id):
+    user_id = normalize_uuid(request.args.get("user_id"))
+    if not user_id:
         return error("user_id query parameter must be a UUID", 400)
 
     result = (
@@ -172,7 +189,7 @@ def my_registrations():
         .order("created_at", desc=True)
         .execute()
     )
-    return jsonify({"data": result.data})
+    return jsonify({"data": result.data or []})
 
 
 @app.get("/api/events/<event_id>/registrations")
@@ -180,33 +197,34 @@ def event_registrations(event_id):
     """List attendees; organizer_id query param is checked against the event owner."""
     if supabase is None:
         return error("Supabase is not configured", 503)
-    if not valid_uuid(event_id):
+    normalized_event_id = normalize_uuid(event_id)
+    if not normalized_event_id:
         return error("event id must be a UUID", 400)
-    organizer_id = request.args.get("organizer_id")
-    if not valid_uuid(organizer_id):
+    organizer_id = normalize_uuid(request.args.get("organizer_id"))
+    if not organizer_id:
         return error("organizer_id query parameter must be a UUID", 400)
 
     event_result = (
         supabase.table("events")
         .select("id,organizer_id")
-        .eq("id", event_id)
+        .eq("id", normalized_event_id)
         .maybe_single()
         .execute()
     )
-    event = event_result.data
+    event = event_result.data if event_result is not None else None
     if event is None:
         return error("Event not found", 404)
-    if event["organizer_id"] != organizer_id:
+    if normalize_uuid(event.get("organizer_id")) != organizer_id:
         return error("Only the event organizer can view attendees", 403)
 
     result = (
         supabase.table("registrations")
         .select("id,user_id,event_id,created_at,users(id,email,role)")
-        .eq("event_id", event_id)
+        .eq("event_id", normalized_event_id)
         .order("created_at")
         .execute()
     )
-    return jsonify({"data": result.data})
+    return jsonify({"data": result.data or []})
 
 
 if __name__ == "__main__":
