@@ -24,19 +24,25 @@ npm install
 npm run dev
 ```
 
-Vite proxies `/api` requests to the Flask server on port 5000. For Vercel, set
-the project root directory to `frontend`, set `VITE_API_URL` to the deployed API
-base URL, and set `FRONTEND_ORIGIN` on the backend to the frontend's Vercel origin.
-See `frontend/README.md` for deployment details.
+Vite proxies `/api` requests to `http://127.0.0.1:5000`. Leave `VITE_API_URL`
+empty for local development. For a separately hosted frontend, set it to the
+backend origin only, with no trailing slash (for example,
+`https://events-api.onrender.com`). The browser then calls the backend directly.
+Set `FRONTEND_ORIGIN` on the backend to the frontend's origin, without a path.
+You can provide multiple allowed origins as a comma-separated list, for example
+`https://campus-connect.onrender.com,https://campus.example.edu`.
 
 ## Deploy to Render
 
 Create a Render Blueprint from the repository containing this folder. If this
-folder is the repository root, `render.yaml` configures the web service. Set
+folder is the repository root, `render.yaml` configures the free Flask web
+service and the `campus-connect` static site. Set
 `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in the service environment; the
 Blueprint prompts for these values because they are marked `sync: false`.
-Render installs dependencies from `requirements.txt` and runs the API with
-Gunicorn.
+Set `FRONTEND_ORIGIN` to `https://campus-connect.onrender.com` (or the actual
+static site's custom domain). Set the static site's `VITE_API_URL` to the
+backend origin, for example `https://events-api.onrender.com`, with no trailing
+slash. Render builds `frontend` and publishes `dist`.
 
 ## Endpoints
 
